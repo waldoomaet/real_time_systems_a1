@@ -1,0 +1,5 @@
+# Build the image
+podman build -t ada-dev .
+
+# Run the container with root privileges inside the container
+podman run -it --rm --userns=keep-id --privileged -v $(pwd):/workspace ada-dev
