@@ -1,0 +1,82 @@
+V "GNAT Lib v10"
+M P W=b
+P ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_IO
+RV SPARK_05
+
+U cyclic%b		exercise_1.adb		42ab272c NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z interfaces%s		interfac.ads		interfac.ali
+Z system.arith_64%s	s-arit64.adb		s-arit64.ali
+Z system.img_lld%s	s-imglld.adb		s-imglld.ali
+
+D ada.ads		20230707070819 76789da1 ada%s
+D a-calend.ads		20230707070819 474d9720 ada.calendar%s
+D a-caldel.ads		20230707070819 9f20b83d ada.calendar.delays%s
+D a-except.ads		20230707070819 a7106115 ada.exceptions%s
+D a-ioexce.ads		20230707070819 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
+D a-tags.ads		20230707070819 491b781d ada.tags%s
+D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
+D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
+D exercise_1.adb	20241121194655 ab126561 cyclic%b
+D interfac.ads		20230707070819 5ab55268 interfaces%s
+D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
+D system.ads		20230707070819 77e65b42 system%s
+D s-arit64.ads		20230707070819 404da5f2 system.arith_64%s
+D s-crtl.ads		20230707070819 0ebbdb71 system.crtl%s
+D s-exctab.ads		20230707070819 54135002 system.exception_table%s
+D s-ficobl.ads		20230707070819 078245e4 system.file_control_block%s
+D s-imglld.ads		20230707070819 f3220969 system.img_lld%s
+D s-parame.ads		20230707070819 48ec542b system.parameters%s
+D s-secsta.ads		20230707070819 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20230707070819 a7318a92 system.soft_links%s
+D s-stache.ads		20230707070819 a37c21ec system.stack_checking%s
+D s-stalib.ads		20230707070819 09bd3940 system.standard_library%s
+D s-stoele.ads		20230707070819 2dc34a04 system.storage_elements%s
+D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20230707070819 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20230707070819 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [cyclic standard 6 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 10|1r6 2r6 3r5 4r5
+X 2 a-calend.ads
+36K13*Calendar 409e17 10|1w10 3r9
+42I9*Time<222I9> 10|7r17 11r19
+56V13*Clock{42I9} 10|7s25 17s33 24s33 31s33 41s12
+103V14*"+"{42I9} 10|11s38 44s42 53s32
+112V14*"-"{duration} 10|17s39 24s39 31s39
+123V14*">="{boolean} 10|41s18
+222I9 Time_Rep<long_long_integer>
+X 8 a-textio.ads
+57K13*Text_IO 727e16 10|2w10 4r9
+465U14*Put 10|16s9 23s9 30s9
+508U14*Put_Line 10|17s9 24s9 31s9
+X 10 exercise_1.adb
+6U11*cyclic 6b11 55l5 55t11
+7i5 Start_Time{2|42I9} 11r27 17r41 24r41 31r41 53r21
+8i5 s{integer} 50m9 50r14 53r43
+9o5 d{duration} 11r40 44r44 53r48
+10o5 f3d{duration}
+11i5 Next_F3_Time{2|42I9} 41r21 44m13 44r29 46r25
+13U15 f1 13b15 18l9 18t11 37s9
+14a9 Message{string} 16r13
+20U15 f2 20b15 25l9 25t11 38s9
+21a9 Message{string} 23r13
+27U15 f3 27b15 32l9 32t11 42s13
+28a9 Message{string} 30r13
+X 11 interfac.ads
+55I9*Integer_64<long_long_integer>
+X 14 s-arit64.ads
+44I12*Int64{11|55I9}
+54V13*Multiply_With_Ovflo_Check{44I12} 55i<c,__gnat_mulv64>22
+
