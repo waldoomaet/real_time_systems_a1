@@ -9,7 +9,7 @@ RV NO_FIXED_POINT
 RV NO_IO
 RV SPARK_05
 
-U cyclic%b		exercise_1.adb		42ab272c NE OO SU IL
+U cyclic%b		exercise_1.adb		f4b57ec4 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
@@ -27,7 +27,7 @@ D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
 D a-tags.ads		20230707070819 491b781d ada.tags%s
 D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
 D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
-D exercise_1.adb	20241121194655 ab126561 cyclic%b
+D exercise_1.adb	20241121215823 1d0c3c89 cyclic%b
 D interfac.ads		20230707070819 5ab55268 interfaces%s
 D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
 D system.ads		20230707070819 77e65b42 system%s
@@ -46,34 +46,33 @@ D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20230707070819 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20230707070819 1b7d22d2 system.wch_con%s
 G a e
-G c Z b b [cyclic standard 6 11 none]
+G c Z b b [cyclic standard 7 11 none]
 X 1 ada.ads
 16K9*Ada 20e8 10|1r6 2r6 3r5 4r5
 X 2 a-calend.ads
 36K13*Calendar 409e17 10|1w10 3r9
-42I9*Time<222I9> 10|7r17 11r19
-56V13*Clock{42I9} 10|7s25 17s33 24s33 31s33 41s12
-103V14*"+"{42I9} 10|11s38 44s42 53s32
-112V14*"-"{duration} 10|17s39 24s39 31s39
-123V14*">="{boolean} 10|41s18
+42I9*Time<222I9> 10|8r17 12r19
+56V13*Clock{42I9} 10|8s25 19s33 26s33 33s33
+103V14*"+"{42I9} 10|12s38 43s38 48s32
+112V14*"-"{duration} 10|19s39 26s39 33s39
 222I9 Time_Rep<long_long_integer>
 X 8 a-textio.ads
 57K13*Text_IO 727e16 10|2w10 4r9
-465U14*Put 10|16s9 23s9 30s9
-508U14*Put_Line 10|17s9 24s9 31s9
+465U14*Put 10|18s9 25s9 32s9
+508U14*Put_Line 10|19s9 26s9 33s9
 X 10 exercise_1.adb
-6U11*cyclic 6b11 55l5 55t11
-7i5 Start_Time{2|42I9} 11r27 17r41 24r41 31r41 53r21
-8i5 s{integer} 50m9 50r14 53r43
-9o5 d{duration} 11r40 44r44 53r48
-10o5 f3d{duration}
-11i5 Next_F3_Time{2|42I9} 41r21 44m13 44r29 46r25
-13U15 f1 13b15 18l9 18t11 37s9
-14a9 Message{string} 16r13
-20U15 f2 20b15 25l9 25t11 38s9
-21a9 Message{string} 23r13
-27U15 f3 27b15 32l9 32t11 42s13
-28a9 Message{string} 30r13
+7U11*cyclic 7b11 51l5 51t11
+8i5 Start_Time{2|42I9} 12r27 19r41 26r41 33r41 48r21
+9i5 s{integer} 46m9 46r14 48r43
+10o5 d{duration} 12r40 48r49 48r53
+11o5 f3d{duration} 43r40
+12i5 Next_F3_Time{2|42I9} 40r21 43m9 43r25
+15U15 f1 15b15 20l9 20t11 38s9
+16a9 Message{string} 18r13
+22U15 f2 22b15 27l9 27t11 39s9
+23a9 Message{string} 25r13
+29U15 f3 29b15 34l9 34t11 41s9
+30a9 Message{string} 32r13
 X 11 interfac.ads
 55I9*Integer_64<long_long_integer>
 X 14 s-arit64.ads
