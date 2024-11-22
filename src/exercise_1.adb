@@ -39,9 +39,11 @@ begin
         f2;
         delay until Next_F3_Time;
         f3;
+        if s mod 3 = 2 then
+            f1;
+            f2;
+        end if;
         Next_F3_Time := Next_F3_Time + f3d;
-     
-        -- Increment `s` for each loop cycle
         s := s + 1;
         -- Delay for the next cycle to maintain the time interval between cycles
         delay until Start_Time + Duration(s) * (d + d);

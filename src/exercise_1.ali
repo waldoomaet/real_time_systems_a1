@@ -9,7 +9,7 @@ RV NO_FIXED_POINT
 RV NO_IO
 RV SPARK_05
 
-U cyclic%b		exercise_1.adb		f4b57ec4 NE OO SU IL
+U cyclic%b		exercise_1.adb		60c48ade NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
@@ -27,7 +27,7 @@ D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
 D a-tags.ads		20230707070819 491b781d ada.tags%s
 D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
 D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
-D exercise_1.adb	20241121215823 1d0c3c89 cyclic%b
+D exercise_1.adb	20241122131327 897dc893 cyclic%b
 D interfac.ads		20230707070819 5ab55268 interfaces%s
 D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
 D system.ads		20230707070819 77e65b42 system%s
@@ -53,7 +53,7 @@ X 2 a-calend.ads
 36K13*Calendar 409e17 10|1w10 3r9
 42I9*Time<222I9> 10|8r17 12r19
 56V13*Clock{42I9} 10|8s25 19s33 26s33 33s33
-103V14*"+"{42I9} 10|12s38 43s38 48s32
+103V14*"+"{42I9} 10|12s38 49s38 52s32
 112V14*"-"{duration} 10|19s39 26s39 33s39
 222I9 Time_Rep<long_long_integer>
 X 8 a-textio.ads
@@ -61,17 +61,17 @@ X 8 a-textio.ads
 465U14*Put 10|18s9 25s9 32s9
 508U14*Put_Line 10|19s9 26s9 33s9
 X 10 exercise_1.adb
-7U11*cyclic 7b11 51l5 51t11
-8i5 Start_Time{2|42I9} 12r27 19r41 26r41 33r41 48r21
-9i5 s{integer} 46m9 46r14 48r43
-10o5 d{duration} 12r40 48r49 48r53
-11o5 f3d{duration} 43r40
-12i5 Next_F3_Time{2|42I9} 40r21 43m9 43r25
-15U15 f1 15b15 20l9 20t11 38s9
+7U11*cyclic 7b11 55l5 55t11
+8i5 Start_Time{2|42I9} 12r27 19r41 26r41 33r41 52r21
+9i5 s{integer} 45r12 50m9 50r14 52r43
+10o5 d{duration} 12r40 52r49 52r53
+11o5 f3d{duration} 49r40
+12i5 Next_F3_Time{2|42I9} 42r21 49m9 49r25
+15U15 f1 15b15 20l9 20t11 39s13 46s13
 16a9 Message{string} 18r13
-22U15 f2 22b15 27l9 27t11 39s9
+22U15 f2 22b15 27l9 27t11 40s13 47s13
 23a9 Message{string} 25r13
-29U15 f3 29b15 34l9 34t11 41s9
+29U15 f3 29b15 34l9 34t11 43s9
 30a9 Message{string} 32r13
 X 11 interfac.ads
 55I9*Integer_64<long_long_integer>
