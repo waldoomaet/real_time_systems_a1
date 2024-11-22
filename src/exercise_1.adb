@@ -37,16 +37,14 @@ begin
     loop
         f1;
         f2;
-        delay until Next_F3_Time;
-        f3;
-        if s mod 3 = 2 then
-            f1;
-            f2;
+        --here because s is initiated to 0:
+        if s mod 2 = 0 then
+            delay until Next_F3_Time;
+            f3;
+            Next_F3_Time := Next_F3_Time + f3d;
         end if;
-        Next_F3_Time := Next_F3_Time + f3d;
         s := s + 1;
         -- Delay for the next cycle to maintain the time interval between cycles
-        delay until Start_Time + Duration(s) * (d + d);
-       
+        delay until Start_Time + Duration(s) ;
     end loop;
 end cyclic;
