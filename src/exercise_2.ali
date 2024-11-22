@@ -52,7 +52,7 @@ D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
 D a-tags.ads		20230707070819 491b781d ada.tags%s
 D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
 D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
-D exercise_2.adb	20241122142504 1d804165 cyclic_wd%b
+D exercise_2.adb	20241122205234 1d804165 cyclic_wd%b
 D interfac.ads		20230707070819 5ab55268 interfaces%s
 D i-c.ads		20230707070819 5421119b interfaces.c%s
 D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
@@ -93,9 +93,9 @@ X 1 ada.ads
 X 2 a-calend.ads
 36K13*Calendar 409e17 14|1w10 5r9
 42I9*Time<222I9> 14|11r18 15r20 54r23
-56V13*Clock{42I9} 14|11s26 24s33 31s33 43s33 59s36 64s24 87s16 89s31
-103V14*"+"{42I9} 14|15s39 91s44 93s46 97s32
-112V14*"-"{duration} 14|24s39 31s39 43s39 64s30 87s22
+56V13*Clock{42I9} 14|11s26 24s33 31s33 43s33 59s36 66s24 92s16 94s31
+103V14*"+"{42I9} 14|15s39 96s44 98s46 102s32
+112V14*"-"{duration} 14|24s39 31s39 43s39 66s30 92s22
 222I9 Time_Rep<long_long_integer>
 X 7 a-numeri.ads
 16K13*Numerics 32e17 14|3r10 7r9
@@ -108,28 +108,28 @@ X 8 a-nuflra.ads
 X 12 a-textio.ads
 57K13*Text_IO 727e16 14|2w10 6r9
 465U14*Put 14|23s9 30s9 42s9
-508U14*Put_Line 14|24s9 31s9 43s9 65s25
+508U14*Put_Line 14|24s9 31s9 43s9 67s25
 X 14 exercise_2.adb
-9U11*cyclic_wd 9b11 99l5 99t14
-11i5 Start_Time{2|42I9} 15r28 24r41 31r41 43r41 89m17 91r33 97r21
-12i5 S{integer} 82r12 90m17 96m9 96r14 97r43
-13o5 D{duration} 15r41 91r46
-14o5 F3d{duration} 93r48
-15i5 Next_F3_Time{2|42I9} 84r25 87r24 91m17 93m17 93r33
-16o5 Task_Deadline{duration} 64r46 87r39
-17b5 F3_Done{boolean} 44m9 60m21 63r31
-20U15 f1 20b15 25l9 25t11 80s9
+9U11*cyclic_wd 9b11 104l5 104t14
+11i5 Start_Time{2|42I9} 15r28 24r41 31r41 43r41 94m17 96r33 102r21
+12i5 S{integer} 85r12 95m17 101m9 101r14 102r43
+13o5 D{duration} 15r41 96r46
+14o5 F3d{duration} 98r48
+15i5 Next_F3_Time{2|42I9} 87r25 92r24 96m17 98m17 98r33
+16o5 Task_Deadline{duration} 66r46 92r39
+17b5 F3_Done{boolean} 44m9 60m21 65r31
+20U15 f1 20b15 25l9 25t11 82s9
 21a9 Message{string} 23r13
-27U15 f2 27b15 32l9 32t11 81s9
+27U15 f2 27b15 32l9 32t11 83s9
 28a9 Message{string} 30r13
-34U15 f3 34b15 45l9 45t11 85s13
+34U15 f3 34b15 45l9 45t11 88s13
 35r9 Gen{8|47R9} 39r15 40r27
 36f9 X{float} 40m9 41r24
 37a9 Message{string} 42r13
-48t10 Watchdog 53b15 76l9 76t17 83r13 86r13
-49Y15 Start_Watch 58b24 61l21 61t32 83s22
-50Y15 Stop_Watch 71b24 73l21 73t31 86s22
-54i9 Watch_Start{2|42I9} 59m21 64r32
+48t10 Watchdog 53b15 78l9 78t17 86r13 89r13
+49Y15 Start_Watch 58b24 61l21 61t32 86s22
+50Y15 Stop_Watch 73b24 75l21 75t31 89s22
+54i9 Watch_Start{2|42I9} 59m21 66r32
 X 34 s-stausa.ads
 208U14*Initialize 209i<c,__gnat_stack_usage_initialize>22
 273U14*Output_Results 277i<c,__gnat_stack_usage_output_results>22

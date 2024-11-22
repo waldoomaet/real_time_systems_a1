@@ -8,13 +8,13 @@ use Ada.Numerics.Float_Random;
 
 procedure cyclic_wd is
     -- Constant and Variable Declarations
-    Start_Time : Time := Clock;
-    S : Integer := 0;
-    D : Duration := 0.5;
-    F3d : Duration := 2.0;
-    Next_F3_Time : Time := Start_Time + D;
-    Task_Deadline : constant Duration := 0.5;
-    F3_Done : Boolean := False;
+    Start_Time : Time := Clock;     --Capture the start time of the procedure
+    S : Integer := 0;               -- Counter to track loop iterations
+    D : Duration := 0.5;            -- Base duration between tasks in a cycle
+    F3d : Duration := 2.0;          --Interval between consecutive executions of f3
+    Next_F3_Time : Time := Start_Time + D;         -- Initial execution time for f3
+    Task_Deadline : constant Duration := 0.5;      -- Deadline for f3's execution
+    F3_Done : Boolean := False;                    -- Flag to indicate if f3 has completed
 
     -- Procedures
     procedure f1 is
@@ -32,12 +32,12 @@ procedure cyclic_wd is
     end f2;
 
     procedure f3 is
-        Gen : Generator;
-        X : Float;
+        Gen : Generator;      -- Random number generator
+        X : Float;            -- Random delay duration for f3
         Message : constant String := "f3 executing, time is now";
     begin
         Reset(Gen);
-        X := 0.5 + Random(Gen);
+        X := 0.5 + Random(Gen);     -- Generate a random delay between 0.5 and 1.5 seconds
         delay Duration(X);
         Put(Message);
         Put_Line(Duration'Image(Clock - Start_Time));
@@ -46,12 +46,12 @@ procedure cyclic_wd is
 
     -- Watchdog Task
     task Watchdog is
-        entry Start_Watch;
-        entry Stop_Watch;
+        entry Start_Watch;    -- Entry to start the watchdog
+        entry Stop_Watch;     -- Entry to stop the watchdog
     end Watchdog;
 
     task body Watchdog is
-        Watch_Start : Time;
+        Watch_Start : Time;      -- Record the start time for monitoring f3
     begin
         loop
             select
@@ -59,6 +59,8 @@ procedure cyclic_wd is
                     Watch_Start := Clock;
                     F3_Done := False;
                 end Start_Watch;
+
+                 -- Monitor task f3 for deadline violations
                 loop
                     exit when F3_Done;
                     if Clock - Watch_Start > Task_Deadline then
@@ -79,21 +81,24 @@ begin
     loop
         f1;
         f2;
+        -- Execute f3 every second iteration (based on counter S)
         if S mod 2 = 0 then
             Watchdog.Start_Watch;
             delay until Next_F3_Time;
             f3;
             Watchdog.Stop_Watch;
+
+            -- Check if f3 exceeded its deadline
             if Clock - Next_F3_Time > Task_Deadline then
                 -- Re-synchronize to start at whole seconds
                 Start_Time := Clock;
                 S := 0; -- Reset the counter
                 Next_F3_Time := Start_Time + D;
             else
-                Next_F3_Time := Next_F3_Time + F3d;
+                Next_F3_Time := Next_F3_Time + F3d;  -- Schedule the next execution of f3
             end if;
         end if;
-        S := S + 1;
+        S := S + 1;     -- Increment the iteration counter
         delay until Start_Time + Duration(S);
     end loop;
 end cyclic_wd;

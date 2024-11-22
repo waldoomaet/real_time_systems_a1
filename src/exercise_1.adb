@@ -5,11 +5,11 @@ use Ada.Text_IO;
 
 
 procedure cyclic is
-    Start_Time: Time := Clock;
-    s: Integer := 0; -- Counter to track loop iterations
-    d: Duration := 0.5; 
-    f3d: Duration := 2.0;
-    Next_F3_Time: Time := Start_Time + d; -- First execution time for f3
+    Start_Time: Time := Clock;  --Capture the start time of the procedure
+    s: Integer := 0;            -- Counter to track loop iterations
+    D: Duration := 0.5;         -- Base duration between tasks in a cycle
+    F3d: Duration := 2.0;       --Duration between consecutive executions of f3
+    Next_F3_Time: Time := Start_Time + D; -- First execution time for f3
   
 
     procedure f1 is
@@ -37,11 +37,11 @@ begin
     loop
         f1;
         f2;
-        --here because s is initiated to 0:
+        --Execute f3 every second iteration (based on counter s)
         if s mod 2 = 0 then
-            delay until Next_F3_Time;
+            delay until Next_F3_Time; -- Wait until the next scheduled time for f3
             f3;
-            Next_F3_Time := Next_F3_Time + f3d;
+            Next_F3_Time := Next_F3_Time + F3d; -- Update the next scheduled time for f3
         end if;
         s := s + 1;
         -- Delay for the next cycle to maintain the time interval between cycles

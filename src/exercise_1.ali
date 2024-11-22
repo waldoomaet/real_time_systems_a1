@@ -25,7 +25,7 @@ D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
 D a-tags.ads		20230707070819 491b781d ada.tags%s
 D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
 D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
-D exercise_1.adb	20241122140124 fdcce736 cyclic%b
+D exercise_1.adb	20241122204435 fdcce736 cyclic%b
 D interfac.ads		20230707070819 5ab55268 interfaces%s
 D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
 D system.ads		20230707070819 77e65b42 system%s
@@ -58,11 +58,11 @@ X 8 a-textio.ads
 465U14*Put 10|18s9 25s9 32s9
 508U14*Put_Line 10|19s9 26s9 33s9
 X 10 exercise_1.adb
-7U11*cyclic 7b11 51l5 51t11
+7U11*cyclic 7b11 50l5 50t11
 8i5 Start_Time{2|42I9} 12r27 19r41 26r41 33r41 48r21
 9i5 s{integer} 41r12 46m9 46r14 48r43
-10o5 d{duration} 12r40
-11o5 f3d{duration} 44r44
+10o5 D{duration} 12r40
+11o5 F3d{duration} 44r44
 12i5 Next_F3_Time{2|42I9} 42r25 44m13 44r29
 15U15 f1 15b15 20l9 20t11 38s9
 16a9 Message{string} 18r13
