@@ -1,5 +1,3 @@
---Cyclic scheduler with a watchdog: 
-
 with Ada.Calendar;
 with Ada.Text_IO;
 with Ada.Numerics.Float_Random;
@@ -8,94 +6,94 @@ use Ada.Calendar;
 use Ada.Text_IO;
 use Ada.Numerics.Float_Random;
 
-
-
--- add packages to use randam number generator
-
-
 procedure cyclic_wd is
-    Message: constant String := "Cyclic scheduler with watchdog";
-        -- change/add your declarations here
-        d: Duration := 1.0;
-	Start_Time: Time := Clock;
-   s          : Integer := 0; -- Counter to track loop iterations
-   d          : Duration := 0.5;
-   f3d        : Duration := 2.0;
-   Next_F3_Time : Time := Start_Time + d; -- First execution time for f3
-   Task_Deadline : constant Duration := 0.5;
-
-    -- A flag to indicate when F3 has finished
+    -- Constant and Variable Declarations
+    Start_Time : Time := Clock;
+    S : Integer := 0;
+    D : Duration := 0.5;
+    F3d : Duration := 2.0;
+    Next_F3_Time : Time := Start_Time + D;
+    Task_Deadline : constant Duration := 0.5;
     F3_Done : Boolean := False;
-        
 
-	procedure f1 is 
-		Message: constant String := "f1 executing, time is now";
-	begin
-		Put(Message);
-		Put_Line(Duration'Image(Clock - Start_Time));
-	end f1;
+    -- Procedures
+    procedure f1 is
+        Message : constant String := "f1 executing, time is now";
+    begin
+        Put(Message);
+        Put_Line(Duration'Image(Clock - Start_Time));
+    end f1;
 
-	procedure f2 is 
-		Message: constant String := "f2 executing, time is now";
-	begin
-		Put(Message);
-		Put_Line(Duration'Image(Clock - Start_Time));
-	end f2;
+    procedure f2 is
+        Message : constant String := "f2 executing, time is now";
+    begin
+        Put(Message);
+        Put_Line(Duration'Image(Clock - Start_Time));
+    end f2;
 
-	procedure f3 is 
-      Gen : Generator;
-      X : Float;
-		Message: constant String := "f3 executing, time is now";
-	begin
-   -- add a random delay here
-      Reset (Gen);
-      X := 0.5 + Random(Gen);
-      delay Duration(X);
-		Put(Message);
-		Put_Line(Duration'Image(Clock - Start_Time));
-      F3_Done := True;
-		
-	end f3;
-	
-	task Watchdog is
-	       -- add your task entries for communication 	
-      entry Start_Watch;
-      entry Stop_Watch;
-	end Watchdog;
+    procedure f3 is
+        Gen : Generator;
+        X : Float;
+        Message : constant String := "f3 executing, time is now";
+    begin
+        Reset(Gen);
+        X := 0.5 + Random(Gen);
+        delay Duration(X);
+        Put(Message);
+        Put_Line(Duration'Image(Clock - Start_Time));
+        F3_Done := True;
+    end f3;
 
-	task body Watchdog is
-		begin
-		loop
-      -- add your task code inside this loop 
-         select
-               accept Start_Watch do
-                  Watch_Start := Clock; -- Record the start time of F3
-                  F3_Done := False;
-               end Start_Watch;
-               if not F3_Done then
-                  Put_Line("WARNING!!! F3 MISSED ITS DEADLINE");
-               end if;
-            or
-               accept Stop_Watch do
-                    null; 
-                end Stop_Watch;
-         end select;
-                    
-		end loop;
-	end Watchdog;
+    -- Watchdog Task
+    task Watchdog is
+        entry Start_Watch;
+        entry Stop_Watch;
+    end Watchdog;
 
-	begin
-
+    task body Watchdog is
+        Watch_Start : Time;
+    begin
         loop
-            -- change/add your code inside this loop     
-            f1;
-            f2;
+            select
+                accept Start_Watch do
+                    Watch_Start := Clock;
+                    F3_Done := False;
+                end Start_Watch;
+                loop
+                    exit when F3_Done;
+                    if Clock - Watch_Start > Task_Deadline then
+                        Put_Line("WARNING!!! F3 MISSED ITS DEADLINE");
+                        exit;
+                    end if;
+                    delay 0.01; -- Short delay to prevent busy-waiting
+                end loop;
+            or
+                accept Stop_Watch do
+                    null;
+                end Stop_Watch;
+            end select;
+        end loop;
+    end Watchdog;
+
+begin
+    loop
+        f1;
+        f2;
+        if S mod 2 = 0 then
+            Watchdog.Start_Watch;
             delay until Next_F3_Time;
             f3;
-            Next_F3_Time := Next_F3_Time + f3d;
-            s := s + 1;
-            -- Delay for the next cycle to maintain the time interval between cycles
-            delay until Start_Time + Duration(s) * (d + d);    
-        end loop;
+            Watchdog.Stop_Watch;
+            if Clock - Next_F3_Time > Task_Deadline then
+                -- Re-synchronize to start at whole seconds
+                Start_Time := Clock;
+                S := 0; -- Reset the counter
+                Next_F3_Time := Start_Time + D;
+            else
+                Next_F3_Time := Next_F3_Time + F3d;
+            end if;
+        end if;
+        S := S + 1;
+        delay until Start_Time + Duration(S);
+    end loop;
 end cyclic_wd;
-
